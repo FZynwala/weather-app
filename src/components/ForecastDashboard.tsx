@@ -43,7 +43,7 @@ const ForecastDashboard: React.FC<{ data?: ForecastWeather }> = ({ data }) => {
             <Spacer />
             <FlatList
                 data={sortByDays(data?.list)}
-                showsVerticalScrollIndicator
+                showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) => {
                     return (
                         <>
@@ -68,24 +68,9 @@ const ForecastDashboard: React.FC<{ data?: ForecastWeather }> = ({ data }) => {
 };
 
 const styles = StyleSheet.create({
-    surface: {
-        padding: 8,
-        width: 330,
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        backgroundColor: '#98c1c8',
-    },
-    list: {
-        marginVertical: 10,
-    },
     dayHeader: {
         marginBottom: 5,
         marginTop: 20,
-    },
-    subList: {
-        backgroundColor: '#4b6584',
     },
 });
 

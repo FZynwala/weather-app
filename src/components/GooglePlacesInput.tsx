@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
-import { apiKey } from '../config/config';
+import { apiKey } from '../config';
 import { changeCoord } from '../store';
 
 const GooglePlacesInput: React.FC = () => {
@@ -12,6 +12,7 @@ const GooglePlacesInput: React.FC = () => {
     const handlePress = (data: GooglePlaceData, details: GooglePlaceDetail | null) => {
         dispatch(changeCoord({ lat: details?.geometry.location.lat, lon: details?.geometry.location.lng }));
     };
+
     return (
         <View>
             <GooglePlacesAutocomplete
@@ -37,32 +38,28 @@ const GooglePlacesInput: React.FC = () => {
                         zIndex: 100,
                         elevation: 3,
                         top: 50,
-                        paddingHorizontal: 15,
+                        backgroundColor: '#f1f2f6',
+                        width: '90%',
+                        alignSelf: 'center',
                     },
                     container: {
                         marginHorizontal: 15,
-                        marginTop: 35,
+                        marginTop: 40,
                         zIndex: 1110,
+                        backgroundColor: '#f1f2f6',
+                    },
+                    separator: {
+                        flex: 1,
+                        height: 1,
+                        backgroundColor: '#c0c6d2',
+                    },
+                    row: {
+                        backgroundColor: '#f1f2f6',
                     },
                 }}
             />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-    },
-    input: {
-        width: 200,
-    },
-    cont: {
-        height: '100%',
-    },
-    // view: {
-    //     marginVertical: 30,
-    // },
-});
 
 export default GooglePlacesInput;

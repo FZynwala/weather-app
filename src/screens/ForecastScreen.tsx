@@ -34,9 +34,6 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
     },
-    surface: {
-        width: '80%',
-    },
     cont: {
         overflow: 'scroll',
     },

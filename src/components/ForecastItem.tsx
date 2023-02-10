@@ -12,7 +12,7 @@ const ForecastItem: React.FC<{ item: List; index: number }> = ({ item, index }) 
     return (
         <View style={styles.list}>
             <ListItem.Accordion
-                theme={{ colors: { background: 'orange' } }}
+                theme={{ colors: { primary: listColor } }}
                 content={
                     <View style={styles.item}>
                         <Text h3>{moment.unix(item.dt).format('HH:mm')}</Text>
@@ -79,22 +79,6 @@ const ForecastItem: React.FC<{ item: List; index: number }> = ({ item, index }) 
 };
 
 const styles = StyleSheet.create({
-    surface: {
-        padding: 8,
-        width: 330,
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        backgroundColor: '#98c1c8',
-    },
-    surfaceItem: {
-        padding: 2,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 20,
-    },
     image: {
         width: 70,
         height: 70,

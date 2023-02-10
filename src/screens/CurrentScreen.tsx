@@ -31,9 +31,6 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
     },
-    input: {
-        width: 200,
-    },
     cont: {
         overflow: 'scroll',
     },

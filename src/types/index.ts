@@ -12,10 +12,7 @@ export type CurrentWeather = {
     base: string;
     main: Main;
     visibility: number;
-    wind: {
-        speed: number;
-        deg: number;
-    };
+    wind: Wind;
     clouds: {
         all: number;
     };
@@ -78,11 +75,7 @@ export type List = {
     clouds: {
         all: number;
     };
-    wind: {
-        speed: number;
-        deg: number;
-        gust: number;
-    };
+    wind: Wind;
     visibility: number;
     pop: number;
     sys: {
@@ -96,3 +89,9 @@ export enum OpenWeatherUnits {
     METRIC = 'metric',
     IMPERIAL = 'imperial',
 }
+
+export type Wind = {
+    speed: number;
+    deg: number;
+    gust?: number;
+};

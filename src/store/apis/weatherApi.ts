@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { appid, baseApiUrl } from '../../config/config';
+import { appid, baseApiUrl } from '../../config';
 import { Coord, CurrentWeather, ForecastWeather, OpenWeatherUnits } from '../../types';
 
 export const currentWeatherApi = createApi({

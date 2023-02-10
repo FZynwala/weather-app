@@ -13,7 +13,7 @@ const CurrentDashboard: React.FC<{ data?: CurrentWeather }> = ({ data }) => {
             {data?.name ? (
                 <>
                     <Text h3>{data?.name}</Text>
-                    <Text>{moment.unix(data.dt).format('DD.MM.YYYY hh:mm')}</Text>
+                    <Text>{moment.unix(data.dt).format('DD.MM.YYYY hh:mm a')}</Text>
                 </>
             ) : null}
             <HeaderContainer>

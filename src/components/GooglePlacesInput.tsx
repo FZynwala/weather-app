@@ -1,6 +1,7 @@
+import { Entypo } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
-import { Input } from 'react-native-elements';
+import { Input, Text } from 'react-native-elements';
 import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
 import { apiKey } from '../config';
@@ -21,10 +22,27 @@ const GooglePlacesInput: React.FC = () => {
                 fetchDetails={true}
                 onPress={handlePress}
                 onFail={(error) => console.log(error)}
-                onNotFound={() => console.log('no results')}
                 isRowScrollable={true}
                 enablePoweredByContainer={false}
                 keepResultsAfterBlur={false}
+                listEmptyComponent={() => (
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Text
+                            style={{
+                                padding: 10,
+                            }}
+                        >
+                            {'No results'}
+                        </Text>
+                        <Entypo name="emoji-sad" size={24} color="black" />
+                    </View>
+                )}
                 textInputProps={{
                     InputComp: Input,
                     leftIcon: { type: 'feather', name: 'search', size: 30 },
@@ -44,7 +62,7 @@ const GooglePlacesInput: React.FC = () => {
                     },
                     container: {
                         marginHorizontal: 15,
-                        marginTop: 40,
+                        marginTop: 45,
                         zIndex: 1110,
                         backgroundColor: '#f1f2f6',
                     },

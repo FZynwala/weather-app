@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
-
+import fetch from 'node-fetch';
 dotenv.config();
 
 const app: Express = express();
@@ -13,7 +13,7 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/place/autocomplete/json', async (req: Request, res: Response) => {
   console.log('!!!!!!!!!!!!!!', req.query);
   let apiUrl = 'https://maps.googleapos.com/maps/api/place/autocomplete/json?';
-  let params = `input${req.query.input}&key=${process.env.API_KEY}&language=en&radius=5000&rankby=distance`;
+  let params = `input=${'bon'}&key=${process.env.API_KEY}&language=en&radius=5000&rankby=distance`;
   let finalApiUrl = `${apiUrl}${encodeURI(params)}`
 
   try {
@@ -21,6 +21,7 @@ app.get('/place/autocomplete/json', async (req: Request, res: Response) => {
     res.send(response.json());
   } catch(e) {
     console.log(e);
+    res.send(e)
   }
 });
 

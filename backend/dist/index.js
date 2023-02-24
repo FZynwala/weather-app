@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const node_fetch_1 = __importDefault(require("node-fetch"));
+const googleApi_1 = __importDefault(require("./api/googleApi"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -22,13 +22,17 @@ app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
 app.get('/place/autocomplete/json', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('!!!!!!!!!!!!!!', req.query);
-    let apiUrl = 'https://maps.googleapos.com/maps/api/place/autocomplete/json?';
-    let params = `input=${'bon'}&key=${process.env.API_KEY}&language=en&radius=5000&rankby=distance`;
-    let finalApiUrl = `${apiUrl}${encodeURI(params)}`;
     try {
-        const response = yield (0, node_fetch_1.default)(finalApiUrl);
-        res.send(response.json());
+        const response = yield googleApi_1.default.get('', {
+            params: {
+                input: req.query.input,
+                key: process.env.API_KEY,
+                language: 'en',
+                radius: '5000',
+                rankby: 'distance',
+            },
+        });
+        res.send(response.data);
     }
     catch (e) {
         console.log(e);

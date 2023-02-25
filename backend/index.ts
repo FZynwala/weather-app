@@ -5,13 +5,11 @@ dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
-app.get('/', (req: Request, res: Response) => {
-    res.send('Express + TypeScript Server');
-});
 
 app.get('/place/autocomplete/json', async (req: Request, res: Response) => {
+    console.log(req.query);
     try {
-        const response = await googleApi.get('', {
+        const response = await googleApi.get('/maps/api/place/autocomplete/json', {
             params: {
                 input: req.query.input,
                 key: process.env.API_KEY,
@@ -20,10 +18,24 @@ app.get('/place/autocomplete/json', async (req: Request, res: Response) => {
                 rankby: 'distance',
             },
         });
-        res.send(response.data);
+        console.log(response.data);
+        res.send(JSON.stringify(response.data));
     } catch (e) {
-        console.log(e);
-        res.send(e);
+        res.sendStatus(500).send(e);
+    }
+});
+
+app.get('/place/details/json', async (req: Request, res: Response) => {
+    try {
+        const response = await googleApi.get('/maps/api/place/details/json', {
+            params: {
+                placeid: req.query.placeid,
+                key: process.env.API_KEY,
+            },
+        });
+        res.send(JSON.stringify(response.data));
+    } catch (e) {
+        res.sendStatus(500).send(e);
     }
 });
 

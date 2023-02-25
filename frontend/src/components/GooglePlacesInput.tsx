@@ -26,7 +26,7 @@ const GooglePlacesInput: React.FC = () => {
                 enablePoweredByContainer={false}
                 keepResultsAfterBlur={false}
                 requestUrl={{
-                    url: 'https://weather-app-qize.onrender.com/place/autocomplete/json',
+                    url: 'https://weather-app-qize.onrender.com',
                     useOnPlatform: 'all',
                 }}
                 listEmptyComponent={() => (

@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { Input, Text } from 'react-native-elements';
 import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
-import { apiKey } from '../config';
 import { changeCoord } from '../store';
 
 const GooglePlacesInput: React.FC = () => {
@@ -18,7 +17,7 @@ const GooglePlacesInput: React.FC = () => {
         <View>
             <GooglePlacesAutocomplete
                 placeholder="Type a place"
-                query={{ key: apiKey }}
+                query={{}}
                 fetchDetails={true}
                 onPress={handlePress}
                 onFail={(error) => console.log(error)}
